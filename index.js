@@ -1,5 +1,8 @@
-const server = require('./api/server');
+const users = require("./api/users/model");
+console.log("HERE'S THE DATA for USERS: ", users);
 
-const port = 9000;
+const server = require("./api/server");
+
+const port = 8000;
 
 // START YOUR SERVER HERE
