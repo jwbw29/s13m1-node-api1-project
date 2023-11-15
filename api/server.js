@@ -50,16 +50,16 @@ server.get("/api/users/:id", (req, res) => {
 server.post("/api/users", (req, res) => {
   const user = req.body;
   !user.name || !user.bio
-    ? res.status(422).json({ message: "name and bio required" })
+    ? res
+        .status(400)
+        .json({ message: "Please provide name and bio for the user" })
     : User.insert(user)
         .then((createdUser) => {
           res.status(201).json(createdUser);
         })
-        .catch((err) => {
+        .catch(() => {
           res.status(500).json({
-            message: "error creating user",
-            err: err.message,
-            stack: err.stack,
+            message: "There was an error while saving the user to the database",
           });
         });
 });
