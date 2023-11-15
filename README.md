@@ -116,11 +116,11 @@ When the client makes a `GET` request to `/api/users`:
   - [x] respond with HTTP status code `500`.
   - [x] return the following JSON object: `{ message: "The user information could not be modified" }`.
 
-- [ ] If the user is found and the new information is valid:
+- [x] If the user is found and the new information is valid:
 
-  - [ ] update the user document in the database using the new information sent in the `request body`.
-  - [ ] respond with HTTP status code `200` (OK).
-  - [ ] return the newly updated _user document_.
+  - [x] update the user document in the database using the new information sent in the `request body`.
+  - [x] respond with HTTP status code `200` (OK).
+  - [x] return the newly updated _user document_.
 
 #### Important Notes
 
