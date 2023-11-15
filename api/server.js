@@ -46,7 +46,7 @@ server.get("/api/users/:id", (req, res) => {
     });
 });
 
-// [ ] create a new user
+// [x] create a new user
 server.post("/api/users", (req, res) => {
   const user = req.body;
   !user.name || !user.bio
@@ -67,8 +67,19 @@ server.post("/api/users", (req, res) => {
 // [ ] update a user
 // server.put()
 
-// [ ] delete a user
-// server.delete()
+// [x] delete a user
+server.delete("/api/users/:id", async (req, res) => {
+  const possibleUser = await User.findById(req.params.id);
+
+  if (!possibleUser) {
+    res.status(404).json({
+      message: "The user with the specified ID does not exist",
+    });
+  } else {
+    const deletedUser = await User.remove(possibleUser.id);
+    res.status(200).json(deletedUser);
+  }
+});
 
 server.use("*", (req, res) => {
   res.status(404).json({ message: "not found" });
